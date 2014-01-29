@@ -38,6 +38,29 @@ end
 
 class LCParser < Sinatra::Base
   
+  DB = Sequel.connect
+  TC = DB[:lcc_testcases]
+  
+  def db_insert(params)
+    components = params[:correct_value]
+    TC.insert(
+      :original_string => params[:original_string],
+      :letters => components[0],
+      :digits => components[0],
+      :doon1 => components[0],
+      :firstcutter => components[0],
+      :doon2 => components[0],
+      :extra_cutters => components[0],
+      :year => components[0],
+      :rest => components[0]
+     )
+   end
+
+
+
+
+    
+  
   set :haml, :layout=>:layout
   get '/' do
     haml :index
@@ -50,6 +73,7 @@ class LCParser < Sinatra::Base
   end
   
   post '/correct' do
+    db_insert(params)
     'success'
   end
   
