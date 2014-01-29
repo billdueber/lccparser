@@ -1,6 +1,7 @@
 $:.unshift 'lib'
 require 'sinatra'
 require 'lc_callnumber'
+require 'sequel'
 
 
 class LCDisplay
