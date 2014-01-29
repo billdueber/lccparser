@@ -2,6 +2,7 @@ $:.unshift 'lib'
 require 'sinatra'
 require 'lc_callnumber'
 require 'sequel'
+require 'sass'
 
 
 class LCDisplay
@@ -47,13 +48,13 @@ class LCParser < Sinatra::Base
     TC.insert(
       :original_string => params[:original_string],
       :letters => components[0],
-      :digits => components[0],
-      :doon1 => components[0],
-      :firstcutter => components[0],
-      :doon2 => components[0],
-      :extra_cutters => components[0],
-      :year => components[0],
-      :rest => components[0]
+      :digits => components[1],
+      :doon1 => components[2],
+      :firstcutter => components[3],
+      :doon2 => components[4],
+      :extra_cutters => components[5],
+      :year => components[6],
+      :rest => components[7]
      )
    end
 
