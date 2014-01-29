@@ -11,9 +11,13 @@
             %th= k
             %td
               %input{:type=>'text', :value=>v, :name=>"correct_value[]"}
+      - unless obj.lcc.valid?
+        %div 
+          String could not be parsed by the parser. If that's correct, just leave
+          everything blank and submit. If not, fix the values and submit those.
       %div.submit
         %div 
-          %input{:type=>'submit', :value=>"Submit as correct"}
+          %input.submit_button{:type=>'submit', :value=>"Submit as correct"}
         %div.submitted_good Thanks. Submitted these values as correct
         
       

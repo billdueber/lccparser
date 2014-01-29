@@ -37,6 +37,7 @@
             success: function(data) {
               if (data == 'success') { 
                 $('.submitted_good', frm).show();
+                $('input.submit_button', frm).hide();
                 
               } else {
                 alert("Error: " + data);
@@ -50,4 +51,5 @@
 
   %body
     %h1 Library of Contress Callnumber parser test
+    %div For questions, contact Bill Dueber (bill at dueber dot com)
     = yield      
