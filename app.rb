@@ -2,6 +2,7 @@ $:.unshift 'lib'
 require 'sinatra'
 require 'lc_callnumber'
 require 'sequel'
+require 'haml'
 require 'sass'
 
 
