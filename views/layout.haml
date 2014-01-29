@@ -3,6 +3,54 @@
   %head
     %title= "Library of Congress Callnumber parser test}"
     %link{:href=>"http://fonts.googleapis.com/css?family=Arbutus", :rel=>"stylesheet", :type=>"text/css"}
+    %script{:type => "text/javascript",
+            :src  =>"//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"}
+        
+    :scss
+      .result { 
+        clear: both;
+        padding-top: 2em; 
+        border-top: 1pt solid gray; 
+        padding-bottom: 1em;  
+  
+        h3 {width: 30%; padding-right: 2em; float:left}
+        table {
+          width: 30%;
+          float: left;
+          th,td { text-align: left;  font-weight: normal}
+          td { padding-left: 1.5em }
+          tr {border-bottom: 1pt solid gray;}
+        }
+        
+        .submit {width: 30%; float:left; padding-top: 4em;}
+        .submitted_good {display: none; color: green;}
+      }
+      
+    :javascript
+      $(document).ready(function() {
+        $('form.ajaxform').submit(function() {
+          frm = $(this)
+          $.ajax({
+            url: '/correct',
+            type: 'POST',
+            data: frm.serialize(),
+            success: function(data) {
+              if (data == 'success') { 
+                $('.submitted_good', frm).show();
+                
+              } else {
+                alert("Error: " + data);
+              }
+            },
+            error: function(xhr,err) {alert("Error: " + err)}
+          });
+          return false;
+        })
+      })
+
   %body
     %h1 Library of Contress Callnumber parser test
+    %div
+      Database URL
+      = ENV['DATABASE_URL']
     = yield      

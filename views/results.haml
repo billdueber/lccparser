@@ -1,9 +1,19 @@
 %h2 Results
 
 - parsed.each_pair do |str,obj|
-  %h3= str
-  %table
-    - obj.each do |k,v|
-      %tr
-        %th= k
-        %td= v
+  %div.result
+    %form.ajaxform{:action=>'/correct', :method=>'POST'}
+      %h3= str
+      %input{:type=>'hidden', :name=>'original_string', :value=>str}
+      %table
+        - obj.each do |k,v|
+          %tr
+            %th= k
+            %td
+              %input{:type=>'text', :value=>v, :name=>"correct_value[]"}
+      %div.submit
+        %div 
+          %input{:type=>'submit', :value=>"Submit as correct"}
+        %div.submitted_good Thanks. Submitted these values as correct
+        
+      

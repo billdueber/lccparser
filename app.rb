@@ -48,4 +48,9 @@ class LCParser < Sinatra::Base
     results = lccs.each_with_object({}) {|l, h| h[l] = LCDisplay.new(LCCallNumber.parse(l))}
     haml :results, :locals=>{:parsed => results}
   end
+  
+  post '/correct' do
+    'success'
+  end
+  
 end

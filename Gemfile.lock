@@ -6,11 +6,13 @@ GEM
       tilt
     parslet (1.5.0)
       blankslate (~> 2.0)
+    pg (0.17.1)
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
+    sass (3.2.14)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -23,5 +25,7 @@ PLATFORMS
 DEPENDENCIES
   haml
   parslet
+  pg
   puma
+  sass
   sinatra
