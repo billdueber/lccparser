@@ -39,7 +39,7 @@ end
 
 class LCParser < Sinatra::Base
   
-  DB = Sequel.connect
+  DB = Sequel.connect(ENV['DATABASE_URL'])
   TC = DB[:lcc_testcases]
   
   def db_insert(params)
