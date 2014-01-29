@@ -1,0 +1,6 @@
+%div
+  Enter up to ten call numbers below (one per line) and then see how they parse.
+  
+%form{:action=>"/", :method=>"POST"}
+  %textarea{:rows=>10, :name=>"lccs"}
+  %input{:type=>"submit"}

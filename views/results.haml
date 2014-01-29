@@ -1,0 +1,9 @@
+%h2 Results
+
+- parsed.each_pair do |str,obj|
+  %h3= str
+  %table
+    - obj.each do |k,v|
+      %tr
+        %th= k
+        %td= v
