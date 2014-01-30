@@ -4,6 +4,8 @@ GEM
     blankslate (2.1.2.4)
     haml (4.0.5)
       tilt
+    lc_callnumber (0.0.1)
+      parslet
     parslet (1.5.0)
       blankslate (~> 2.0)
     pg (0.17.1)
@@ -25,6 +27,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  lc_callnumber
   parslet
   pg
   puma
