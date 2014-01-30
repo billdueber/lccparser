@@ -11,19 +11,19 @@
     %form.ajaxform{:action=>'/correct', :method=>'POST'}
       %h3= str
       %input{:type=>'hidden', :name=>'original_string', :value=>str}
-      %table
-        - obj.each do |k,v|
-          %tr
-            %th= k
-            %td
-              %input{:type=>'text', :value=>v, :name=>"correct_value[]"}
-      - unless obj.lcc.valid?
-        %div 
-          String could not be parsed by the parser. If that's correct, just leave
-          everything blank and submit. If not, fix the values and submit those.
-      %div.submit
-        %div 
+      %div.parts
+        %table
+          - obj.each do |k,v|
+            %tr
+              %th= k
+              %td
+                %input{:type=>'text', :value=>v, :name=>"correct_value[]"}
+        - unless obj.lcc.valid?
+          %div 
+            String could not be parsed by the parser. If that's correct, just leave
+            everything blank and submit. If not, fix the values and submit those.
+        %div.submit
           %input.submit_button{:type=>'submit', :value=>"Submit as correct"}
-        %div.submitted_good Thanks. Submitted these values as correct
+          %div.submitted_good Thanks. Submitted these values as correct
         
       

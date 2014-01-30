@@ -7,24 +7,54 @@
             :src  =>"//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"}
         
     :scss
-      .result { 
+      #header {
+        background-color: #229;
+        padding: .75em;
+        marign-bottom: 1em;
+        color: #ddd;
+        a { 
+          color: #ddd;
+          text-decoration: none;
+        }
+      }
+      
+      #footer {
         clear: both;
-        padding-top: 2em; 
-        border-top: 1pt solid gray; 
-        padding-bottom: 1em;  
-  
-        h3 {width: 30%; padding-right: 2em; float:left}
-        table {
-          width: 30%;
-          float: left;
-          th,td { text-align: left;  font-weight: normal}
-          td { padding-left: 1.5em }
-          tr {border-bottom: 1pt solid gray;}
+        background-color: #229;
+        padding: .75em;
+        margin-top: 2em;
+        color: #ddd;
+      
+      }
+      
+      #content {
+        padding: 1.5em;
+        a {
+          text-decoration: none;
+          border-bottom: 1pt dotted;
         }
         
-        .submit {width: 30%; float:left; padding-top: 4em;}
-        .submitted_good {display: none; color: green;}
+        .result { 
+          clear: both;
+          padding-top: 2em; 
+          border-top: 1pt solid gray; 
+          padding-bottom: 1em;  
+  
+          h3 {width: 30%; display: block; float: left;}
+          .parts {
+            margin-left: 32%;
+            width: 68%;
+            th,td { text-align: left;  font-weight: normal}
+            td { padding-left: 1.5em }
+            tr {border-bottom: 1pt solid gray;}
+
+            table {width: 50%; float: left}
+            .submit {width: 30%; float: left; padding-top: 4em;}
+            .submitted_good {display: none; color: green;}
+          }
+        }
       }
+
       
     :javascript
       $(document).ready(function() {
@@ -50,11 +80,28 @@
       })
 
   %body
-    %h1 
-      %a{:href=>'/'} Library of Contress Callnumber parser test
-    %p 
-      A test application for the parser embedded in the gem
-      %a{:href=>"https://github.com/billdueber/lc_callnumber"} lc_callnumber
-      = "."
-    %p For questions or comments, contact Bill Dueber (bill at dueber dot com)
-    = yield      
+    %div#header
+      %h1 
+        %a{:href=>'/'} Library of Contress Callnumber parser test
+      %p 
+        A test application for the parser embedded in the gem
+        %a{:href=>"https://github.com/billdueber/lc_callnumber"} lc_callnumber
+        = "."
+    %div#content
+      %p
+        The ruby gem
+        %a{:href=>"https://github.com/billdueber/lc_callnumber"} lc_callnumber
+        contains an experimental PEG parser to try and deal with most common syntaxes for 
+        Library of Congress Call Numbers.
+      %p
+        You can help test it by entering up to ten LC call numbers (one per line) in the box below, and then letting
+        the system know whether it got it right or not. Results are fed into a database to generate test cases.
+
+      %form{:action=>"/", :method=>"POST"}
+        %textarea{:rows=>10, :cols=>60, :name=>"lccs"}
+        %input{:type=>"submit"}
+        
+      = yield    
+      
+    %div#footer
+      %p For questions or comments, contact Bill Dueber (bill at dueber dot com)
