@@ -1,5 +1,16 @@
 %h2 Results
 
+The parser attempts to break up a call number into the following pieces.
+
+* Letters
+* Digits (including decimal point, if necessary)
+* First DOON ("Date or Other Number") (e.g., year of the war )
+* First Cutter
+* Second DOON
+* Any other Cutters, comma-delimited
+* The year of publication
+* Everything else
+
 %p 
   If you have a few minutes, please take the time to check/correct and then submit the correct parse. I'm throwing them all in a database and will use it drive more testing for the underlying parser.
   
